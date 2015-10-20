@@ -2,15 +2,40 @@
 // Constructors
 // Only add code to *THIS* section!
 
-///
-///
-///
-///
+'use strict';
+
+var Dog = function Dog(paramsDog) {
+
+  paramsDog = paramsDog || {};
+
+  this.color = paramsDog.color;
+
+  this.hungry = paramsDog.hungry !== undefined ? paramsDog.hungry : true;
+
+  this.status = 'normal';
+
+  this.owner = paramsDog.owner;
+
+  this.cool = paramsDog.cool;
+};
+
+var Human = function Human(paramsHuman) {
+
+  paramsHuman = paramsHuman || {};
+
+  this.cool = paramsHuman.cool !== undefined ? paramsHuman.cool : false;
+
+  this.feed = function (Dog) {
+    Dog.hungry = false;
+  };
+
+  this.pet = function (Dog) {
+    Dog.status = 'happy';
+  };
+};
 
 // Do not ADD or MODIFY code below this line :)
 // Dogs
-'use strict';
-
 var sadie = new Dog({
   color: 'black',
   hungry: false
@@ -59,7 +84,7 @@ it("should make Sadie black", function () {
   expect(sadie.color).toBe('black');
 });
 
-it("should be make Moonshine hungry and Sadie not hungry", function () {
+it("should make Moonshine hungry and Sadie not hungry", function () {
   expect(moonshine.hungry).toBe(true);
   expect(sadie.hungry).toBe(false);
 });
